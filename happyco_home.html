@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAPPYCO - Home Screen</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #38214A;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-image: url('bg_extracted.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Fallback soft mesh if image is unavailable */
+    .bg-mesh-fallback {
+      background: radial-gradient(circle at 15% 20%, #c4b5fd 0%, transparent 40%),
+                  radial-gradient(circle at 85% 15%, #fde047 0%, transparent 35%),
+                  radial-gradient(circle at 50% 55%, #fda4af 0%, transparent 45%),
+                  radial-gradient(circle at 20% 80%, #fef08a 0%, transparent 40%),
+                  radial-gradient(circle at 80% 85%, #f472b6 0%, transparent 45%),
+                  #f5d0fe;
+    }
+
+    /* Glassmorphic utilities matching Figma spec */
+    .glass-shell {
+      background: rgba(217, 217, 217, 0.2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .glass-card-purple {
+      background: rgba(203, 180, 211, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .glass-card-white {
+      background: rgba(255, 255, 255, 0.34);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-pill-yellow {
+      background: rgba(255, 243, 175, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+    }
+    .glass-pill-yellow:hover {
+      background: rgba(255, 243, 175, 1);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(56, 33, 74, 0.12);
+    }
+
+    .glass-hover:hover {
+      background: rgba(255, 255, 255, 0.48);
+      transform: translateY(-1px);
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body class="p-6 md:p-12 flex justify-center items-center min-h-screen">
+
+  <!-- Desktop App Container (1440px Canvas equivalent) -->
+  <div class="w-full max-w-[1360px] flex flex-col gap-6">
+
+    <!-- Top Navigation Bar -->
+    <header class="glass-shell rounded-[44px] px-8 py-5 flex items-center justify-between shadow-sm">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-[#38214A] text-white flex items-center justify-center font-extrabold text-xl shadow-md">
+          H
+        </div>
+        <span class="text-2xl font-extrabold tracking-wider text-[#38214A]">HAPPYCO</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 font-semibold text-[15px] text-[#38214A]/80">
+        <a href="#home" class="text-[#38214A] font-bold pb-1 border-b-2 border-[#38214A]">Home</a>
+        <a href="#trips" class="hover:text-[#38214A] transition-colors">My Trips</a>
+        <a href="#destinations" class="hover:text-[#38214A] transition-colors">Destinations</a>
+        <a href="#community" class="hover:text-[#38214A] transition-colors">Community</a>
+        <a href="#plans" class="hover:text-[#38214A] transition-colors">Itineraries</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-3">
+        <button class="w-10 h-10 rounded-full glass-card-white flex items-center justify-center text-[#38214A] hover:bg-white/50 transition-all">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </button>
+        <button class="w-10 h-10 rounded-full glass-card-white flex items-center justify-center text-[#38214A] hover:bg-white/50 transition-all">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+        </button>
+        <div class="flex items-center gap-2 pl-2">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-400 to-pink-300 p-0.5">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Workspace -->
+    <main class="glass-shell rounded-[44px] p-6 lg:p-9 shadow-lg">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- ================= LEFT COLUMN (Width: ~5 cols) ================= -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+
+          <!-- Hero Promo Card -->
+          <div class="glass-card-purple rounded-[44px] p-8 flex flex-col justify-between shadow-sm relative overflow-hidden min-h-[380px]">
+            <div class="flex flex-col gap-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/40 text-[#38214A] w-fit">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#38214A]"></i> Smart Travel AI
+              </span>
+              <h1 class="text-3xl xl:text-4xl font-extrabold uppercase leading-[1.15] tracking-tight text-[#38214A]">
+                Turn your travel into a real plan with HappyCo
+              </h1>
+              <p class="text-sm text-[#38214A]/80 leading-relaxed font-medium mt-1">
+                Personalized daily agendas, real-time budget forecasting, and collaborative group travel tools designed for unforgettable moments.
+              </p>
+            </div>
+
+            <!-- Inner Translucent Highlight Box -->
+            <div class="glass-card-white rounded-[24px] p-4 mt-6 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#38214A] text-white flex items-center justify-center shadow">
+                  <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs uppercase font-bold text-[#38214A]/70">Active Itinerary</div>
+                  <div class="font-bold text-base text-[#38214A]">Vietnam Heritage Tour</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/60 text-[#38214A]">Day 3 / 8</span>
+            </div>
+
+            <!-- Yellow CTA Button -->
+            <button class="glass-pill-yellow rounded-[30px] w-full py-4 mt-4 font-bold text-base flex items-center justify-center gap-2 text-[#38214A] shadow-sm">
+              <span>Start Planning Now</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Bottom-Left List Card: Recent Trips & Activities -->
+          <div class="glass-card-white rounded-[25px] p-6 flex flex-col gap-4 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-5 h-5 text-[#38214A]"></i>
+                <h2 class="text-lg font-bold text-[#38214A]">Upcoming Journeys</h2>
+              </div>
+              <button class="text-[#38214A]/70 hover:text-[#38214A]">
+                <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- List Item 1 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Da Nang & Hoi An</div>
+                  <div class="text-xs text-[#38214A]/70">Nov 12 - Nov 18 • 4 Friends</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">Confirmed</span>
+            </div>
+
+            <!-- List Item 2 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <i data-lucide="plane" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Tokyo City Wanderlust</div>
+                  <div class="text-xs text-[#38214A]/70">Dec 24 - Jan 02 • Solo Trip</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-700">In Planning</span>
+            </div>
+
+            <!-- List Item 3 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <i data-lucide="coffee" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Saigon Cafe Trail</div>
+                  <div class="text-xs text-[#38214A]/70">This Weekend • 2 Places</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-700">Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= RIGHT COLUMN (Width: ~7 cols) ================= -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+
+          <!-- Top-Right Section: Stats & Metrics Card -->
+          <div class="glass-card-purple rounded-[44px] p-6 lg:p-7 flex flex-col gap-5 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-[#38214A]">Your Exploration Overview</h3>
+                <p class="text-xs text-[#38214A]/75">Milestones achieved this travel season</p>
+              </div>
+              <button class="w-8 h-8 rounded-full bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-black transition-colors shadow">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- 3 Horizontal Stat Blocks -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <!-- Stat 1 -->
+              <div class="glass-card-white rounded-[25px] p-4 flex flex-col justify-between glass-hover">
+                <span class="text-xs font-semibold text-[#38214A]/70">Total Trips</span>
+                <div class="flex items-baseline justify-between mt-2">
+                  <span class="text-2xl font-extrabold text-[#38214A]">14</span>
+                  <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">+3 new</span>
+                </div>
+              </div>
+
+              <!-- Stat 2 -->
+              <div class="glass-card-white rounded-[25px] p-4 flex flex-col justify-between glass-hover">
+                <span class="text-xs font-semibold text-[#38214A]/70">Saved Places</span>
+                <div class="flex items-baseline justify-between mt-2">
+                  <span class="text-2xl font-extrabold text-[#38214A]">86</span>
+                  <i data-lucide="bookmark" class="w-4 h-4 text-purple-600"></i>
+                </div>
+              </div>
+
+              <!-- Stat 3 -->
+              <div class="glass-card-white rounded-[25px] p-4 flex flex-col justify-between glass-hover">
+                <span class="text-xs font-semibold text-[#38214A]/70">Budget Saved</span>
+                <div class="flex items-baseline justify-between mt-2">
+                  <span class="text-2xl font-extrabold text-[#38214A]">$420</span>
+                  <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full">18%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle-Right Section: 2 Split Feature Widgets -->
+          <div class="glass-card-purple rounded-[44px] p-6 lg:p-7 flex flex-col gap-5 shadow-sm">
+            <h3 class="text-lg font-bold text-[#38214A]">Active Plans & Logistics</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Widget 1: Progress / Checklist -->
+              <div class="glass-card-white rounded-[25px] p-5 flex flex-col justify-between min-h-[160px] glass-hover">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#38214A]/70">Itinerary Prep</span>
+                    <span class="text-xs font-extrabold text-[#38214A]">75%</span>
+                  </div>
+                  <h4 class="font-bold text-base text-[#38214A]">Flight & Stay Checklist</h4>
+                  <p class="text-xs text-[#38214A]/70 mt-1">3 of 4 bookings confirmed with host verification.</p>
+                </div>
+                
+                <!-- Progress Bar & Action -->
+                <div class="flex items-center justify-between mt-4">
+                  <div class="w-3/4 bg-white/50 h-2.5 rounded-full overflow-hidden">
+                    <div class="bg-[#38214A] h-full rounded-full" style="width: 75%"></div>
+                  </div>
+                  <button class="w-8 h-8 rounded-full bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-black transition-colors shadow">
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Widget 2: Weather & Local Highlights -->
+              <div class="glass-card-white rounded-[25px] p-5 flex flex-col justify-between min-h-[160px] glass-hover">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#38214A]/70">Live Destination Forecast</span>
+                    <h4 class="font-bold text-base text-[#38214A] mt-1">Hoi An Ancient Town</h4>
+                  </div>
+                  <button class="text-[#38214A]/60 hover:text-[#38214A]">
+                    <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-4 mt-3">
+                  <div class="text-3xl font-extrabold text-[#38214A]">28°C</div>
+                  <div class="text-xs text-[#38214A]/80">
+                    <div class="font-semibold">Sunny & Warm</div>
+                    <div>Ideal for evening lantern walk</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 mt-3 pt-2 border-t border-white/30 text-xs font-medium text-[#38214A]/80">
+                  <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+                  <span>Sunset scheduled at 5:42 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom-Right Section: Community & Recommended Spots -->
+          <div class="glass-card-white rounded-[25px] p-6 flex flex-col gap-4 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-[#38214A]">Recommended by Travelers</h3>
+                <p class="text-xs text-[#38214A]/70">Curated spots based on your travel interests</p>
+              </div>
+              <button class="text-[#38214A]/70 hover:text-[#38214A]">
+                <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Spot Item 1 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center">
+                  <i data-lucide="utensils" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Banh Mi Madam Khanh</div>
+                  <div class="text-xs text-[#38214A]/70">Street Food & Local Bites • 4.9 ★ (1.2k reviews)</div>
+                </div>
+              </div>
+              <button class="px-3 py-1.5 rounded-full text-xs font-bold bg-white/70 hover:bg-white text-[#38214A] transition-colors">
+                Add to Trip
+              </button>
+            </div>
+
+            <!-- Spot Item 2 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
+                  <i data-lucide="camera" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Japanese Covered Bridge</div>
+                  <div class="text-xs text-[#38214A]/70">Historical Landmark • Best in morning</div>
+                </div>
+              </div>
+              <button class="px-3 py-1.5 rounded-full text-xs font-bold bg-white/70 hover:bg-white text-[#38214A] transition-colors">
+                Add to Trip
+              </button>
+            </div>
+
+            <!-- Spot Item 3 -->
+            <div class="glass-card-white rounded-[20px] p-3.5 flex items-center justify-between glass-hover cursor-pointer">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
+                  <i data-lucide="music" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-sm text-[#38214A]">Lantern Boat Night Ride</div>
+                  <div class="text-xs text-[#38214A]/70">Cultural Experience • River Cruise</div>
+                </div>
+              </div>
+              <button class="px-3 py-1.5 rounded-full text-xs font-bold bg-white/70 hover:bg-white text-[#38214A] transition-colors">
+                Add to Trip
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
